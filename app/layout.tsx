@@ -13,6 +13,10 @@ const barlow = localFont({
 const sans = localFont({
   src:"./fonts/OpenSans-VariableFont_wdth,wght.ttf",
   variable:"--font-sans"
+});
+const tinos = localFont({
+  src:"./fonts/Tinos-Regular.ttf",
+  variable:"--font-tinos"
 })
 export const metadata: Metadata = {
   title: "Lifestyle",
@@ -26,9 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${barlow.variable} ${sans.variable} flex flex-col justify-between`}>
+      <body className={`${barlow.variable} ${sans.variable} ${tinos.variable} flex flex-col justify-between`}>
         <Header/>
-        <div className="flex gap-10">{children}</div>
+        <div>{children}</div>
         <Footer/>
       </body>
     </html>

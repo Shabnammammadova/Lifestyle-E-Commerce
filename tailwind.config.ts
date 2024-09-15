@@ -52,7 +52,7 @@ const config: Config = {
   			}
   		},
   		fontFamily: {
-  			sans: ['var(--font-barlow)','var(--font-sans)']
+  			sans: ['var(--font-barlow)','var(--font-sans)','var(--font-tinos)']
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

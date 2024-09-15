@@ -10,7 +10,7 @@ import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlin
 const Header = () => {
   const pathname = usePathname();
   return (
-    <div className="flex items-center justify-between fixed w-full">
+    <div className="flex items-center justify-between relative w-full">
       <div className="w-full p-6 bg-orange-50 flex  items-center justify-between">
         <div className="flex gap-3 items-center font-sans text-xl">
           <Link
@@ -45,12 +45,13 @@ const Header = () => {
           </Link>
         </div>
 
-        <div>
+        <div className="mr-48">
           <Image
             width={50}
             height={50}
             src="https://lifestyle-eta.vercel.app/new-image/sticky-logo.svg"
             alt="logo"
+           
           />
         </div>
         <div className="flex gap-5 items-center">
