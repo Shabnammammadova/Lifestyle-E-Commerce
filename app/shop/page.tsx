@@ -1,83 +1,95 @@
 import React from "react";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 const Shop = () => {
   return (
     <>
-     <div className="max-w-3xl mx-auto py-40">
-      <h1 className="mx-auto uppercase text-center max-w-3xl text-6xl font-sans">
-        Lifestyle<p className="text-orange-500">Multipurpose</p> e-commerce shop{" "}
-        <br />
-        pages
-      </h1>
-      <p className="text-center mt-5 text-slate-400 font-sans">
-        Discover the ultimate destination for your fashion cravings! Our Shop
-        page is a curated gallery<br/>showcasing the latest trends and timeless
-        classNameics. Indulge in a seamless shopping <br /> experience, where style
-        meets convenience. Find your next wardrobe staple here!
-      </p>
-      <Button className="mx-auto flex mt-5 w-60 h-10">VIEW DEMO</Button>
-    </div>
-<section className="pt-16 pb-20 bg-orange-50 mb-2 px-48">
-<div>
-  <h1 className="font-sans text-center text-4xl">Quick
- <p className="text-6xl">Demo of Shop pages</p></h1>
-<div className="grid grid-cols-2 my-16 gap-x-16 gap-y-11 max-w-screen-xl text-center">
-  <div>
-  <div className="border border-black rounded-lg h-96 overflow-hidden">
-  <Image
-    src="https://lifestyle-eta.vercel.app/images/shop-sunglasses-page.png"
-    alt="image"
-    width={535}
-    height={380}
-    className="cursor-pointer object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105"
-  />
-</div>
-<p className="font-sans text-2xl mt-5">Sunglasses Shop</p>
-  </div>
-<div>
-<div className="border border-black rounded-lg h-96 overflow-hidden">
-  <Image
-    src="https://lifestyle-eta.vercel.app/images/shop-bag-page.jpg"
-    alt="image"
-    width={535}
-    height={380}
-    className="cursor-pointer object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105"
-  />
-</div>
-<p className="font-sans text-2xl mt-5">Bag Shop</p>
-</div>
-<div>
-<div className="border border-black rounded-lg h-96 overflow-hidden">
-  <Image
-    src="https://lifestyle-eta.vercel.app/images/shop-blazer-page.jpg"
-    alt="image"
-    width={535}
-    height={380}
-    className="cursor-pointer object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105"
-  />
-</div>
-<p className="font-sans text-2xl mt-5">Blazer Shop</p>
-</div>
-<div>
-<div className="border border-black rounded-lg h-96 overflow-hidden">
-  <Image
-    src="https://lifestyle-eta.vercel.app/images/shop-shoes-page.jpg"
-    alt="image"
-    width={535}
-    height={380}
-    className="cursor-pointer object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105"
-  />
-</div>
-<p className="font-sans text-2xl mt-5">Footware Shop</p>
-</div>
+      <div className="container mx-auto py-20 px-4 lg:px-0">
+        <h1 className="mx-auto uppercase mt-20 text-center text-4xl md:text-5xl lg:text-6xl font-serif">
+          Lifestyle
+          <p className="text-orange-500">Multipurpose</p> e-commerce shop{" "}
+          <br />
+          pages
+        </h1>
+        <p className="text-center mt-5 text-slate-400 font-serif text-sm lg:text-base">
+          Discover the ultimate destination for your fashion cravings! Our Shop
+          page is a curated gallery
+          <br />
+          showcasing the latest trends and timeless classics. Indulge in a
+          seamless shopping
+          <br /> experience, where style meets convenience. Find your next
+          wardrobe staple here!
+        </p>
+        <Button className="mx-auto flex mt-5 w-48 md:w-60 h-10 font-serif">
+          VIEW DEMO
+        </Button>
+      </div>
 
-</div>
-</div>
-</section>
+      <section className="pt-16 pb-20 bg-orange-50 mb-2 px-4 md:px-16 lg:px-24 xl:px-48">
+        <div>
+          <h1 className="font-serif text-center text-3xl md:text-4xl lg:text-5xl">
+            Quick
+            <p className="text-4xl md:text-5xl">Demo of Shop pages</p>
+          </h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-10 gap-x-6 xl:gap-x-48 lg:gap-x-16 lg:gap-y-11 sm:content-center my-16 max-w-[680px] md:max-w-screen-md lg:max-w-screen-xl mx-auto text-center">
+            <div className="flex flex-col items-center">
+              <div className="border border-black rounded-lg h-72 xl:w-[524px] xl:h-[380px] md:h-72 sm:h-[250px] sm:w-[320px] overflow-hidden">
+                <Image
+                  src="https://lifestyle-eta.vercel.app/images/shop-sunglasses-page.png"
+                  alt="Sunglasses Shop"
+                  width={535}
+                  height={380}
+                  className="cursor-pointer z-0 object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105 w-full h-auto lg:w-[535px] lg:h-[380px] md:w-[535px] md:h-[385px] sm:w-[320px] sm:h-[250px]"
+                />
+              </div>
+              <p className="text-xl md:text-2xl mt-5 font-serif">
+                Sunglasses Shop
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <div className="border border-black rounded-lg h-72 xl:w-[524px] xl:h-[380px] md:h-72 sm:h-[250px] sm:w-[320px] overflow-hidden">
+                <Image
+                  src="https://lifestyle-eta.vercel.app/images/shop-bag-page.jpg"
+                  alt="Bag Shop"
+                  width={535}
+                  height={380}
+                  className="cursor-pointer z-0 object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105 w-full h-auto lg:w-[535px] lg:h-[385px] md:w-[535px] md:h-[385px] sm:w-[320px] sm:h-[250px]"
+                />
+              </div>
+              <p className="text-xl md:text-2xl mt-5 font-serif">Bag Shop</p>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <div className="border border-black rounded-lg h-72 xl:w-[524px] xl:h-[380px] md:h-72 sm:h-[250px] sm:w-[320px] overflow-hidden">
+                <Image
+                  src="https://lifestyle-eta.vercel.app/images/shop-blazer-page.jpg"
+                  alt="Blazer Shop"
+                  width={535}
+                  height={380}
+                  className="cursor-pointer z-0 object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105 w-full h-auto lg:w-[535px] lg:h-[385px] md:w-[535px] md:h-[385px] sm:w-[320px] sm:h-[250px]"
+                />
+              </div>
+              <p className="text-xl md:text-2xl mt-5 font-serif">Blazer Shop</p>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <div className="border border-black rounded-lg h-72 xl:w-[524px] xl:h-[380px] md:h-72 sm:h-[250px] sm:w-[320px] overflow-hidden">
+                <Image
+                  src="https://lifestyle-eta.vercel.app/images/shop-shoes-page.jpg"
+                  alt="Footwear Shop"
+                  width={535}
+                  height={380}
+                  className="cursor-pointer z-0 object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105 w-full h-auto lg:w-[535px] lg:h-[385px] md:w-[535px] md:h-[385px] sm:w-[320px] sm:h-[250px]"
+                />
+              </div>
+              <p className="text-xl md:text-2xl mt-5 font-serif">Footwear Shop</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
-   
   );
 };
 
