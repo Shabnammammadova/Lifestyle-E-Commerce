@@ -2,11 +2,12 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
+
 const Shop = () => {
   return (
     <>
       <div className="container mx-auto py-20 px-4 lg:px-0">
-        <h1 className="mx-auto uppercase mt-20 text-center text-4xl md:text-5xl lg:text-6xl font-serif">
+        <h1 className="mx-auto uppercase mt-20 text-center font-serif text-4xl md:text-5xl lg:text-6xl">
           Lifestyle
           <p className="text-orange-500">Multipurpose</p> e-commerce shop{" "}
           <br />
@@ -26,7 +27,7 @@ const Shop = () => {
         </Button>
       </div>
 
-      <section className="pt-16 pb-20 bg-orange-50 mb-2 px-4 md:px-16 lg:px-24 xl:px-48">
+      <section className="pt-16 pb-20 bg-[#F3E6DA]  mb-2 px-4 md:px-16 lg:px-24 xl:px-48">
         <div>
           <h1 className="font-serif text-center text-3xl md:text-4xl lg:text-5xl">
             Quick

@@ -4,7 +4,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <div>
-      <div className='flex items-center pt-20 bg-orange-50 flex-col'>
+      <div className='flex items-center pt-20 bg-[#F3E6DA]  flex-col'>
         <Image
           src="https://lifestyle-eta.vercel.app/new-image/logo.svg"
           alt='image-logo'
