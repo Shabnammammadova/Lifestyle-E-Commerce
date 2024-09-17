@@ -4,7 +4,7 @@ import {} from 'next/font/local'
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
+import {ClerkProvider} from '@clerk/nextjs'
 
 const barlow = localFont({
   src: "./fonts/Barlow-Regular.ttf",
@@ -34,12 +34,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <ClerkProvider>
+ <html lang="en">
       <body className={`${barlow.variable} ${sans.variable} ${tinos.variable} ${playfair.variable} font-sans flex flex-col justify-between`}>
         <Header/>
         <div>{children}</div>
         <Footer/>
       </body>
     </html>
+    </ClerkProvider>
+   
   );
 }

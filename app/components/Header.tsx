@@ -4,16 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
+import { UserButton } from "@clerk/nextjs";
+
 
 const Header = () => {
   const pathname = usePathname();
+
   return (
     <div className="flex items-center justify-between fixed z-50 w-full">
-      <div className="w-full p-6 bg-orange-50 flex items-center justify-between">
+      <div className="w-full pl-10 pr-10 pt-6 pb-6 bg-orange-50 flex items-center justify-between">
 
         <div className="hidden xl:flex gap-3 items-center font-serif text-xl cursor-pointer ">
           <Link
@@ -57,7 +59,10 @@ const Header = () => {
           />
         </div>
         <div className="flex gap-5 items-center">
-          <PersonOutlineIcon className="hidden xl:block cursor-pointer" />
+          {/* <PersonOutlineIcon className="hidden xl:block cursor-pointer" /> */}
+          <div className="hidden xl:block cursor-pointer">
+          <UserButton/>
+          </div>
           <FavoriteBorderIcon className=" hidden xl:block" />
           <ShoppingBasketOutlinedIcon className="cursor-pointer" />
         </div>
