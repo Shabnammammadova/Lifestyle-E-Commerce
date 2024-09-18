@@ -2,15 +2,13 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-
 const Shop = () => {
   return (
     <>
       <div className="container mx-auto py-20 px-4 lg:px-0">
         <h1 className="mx-auto uppercase mt-20 text-center font-serif text-4xl md:text-5xl lg:text-6xl">
           Lifestyle
-          <p className="text-orange-500">Multipurpose</p> e-commerce shop{" "}
-          <br />
+          <p className="text-orange-500">Multipurpose</p> e-commerce shop <br />
           pages
         </h1>
         <p className="text-center mt-5 text-slate-400 font-serif text-sm lg:text-base">
@@ -85,7 +83,9 @@ const Shop = () => {
                   className="cursor-pointer z-0 object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105 w-full h-auto lg:w-[535px] lg:h-[385px] md:w-[535px] md:h-[385px] sm:w-[320px] sm:h-[250px]"
                 />
               </div>
-              <p className="text-xl md:text-2xl mt-5 font-serif">Footwear Shop</p>
+              <p className="text-xl md:text-2xl mt-5 font-serif">
+                Footwear Shop
+              </p>
             </div>
           </div>
         </div>
