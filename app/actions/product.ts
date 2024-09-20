@@ -10,6 +10,6 @@ export async function createProduct(data:Props){
  const product = await prisma.product.create({
     data,
  });
- revalidatePath(paths.dashboard.products)
+ revalidatePath('/filter')
  return product
 }

@@ -4,7 +4,13 @@ const nextConfig = {
         remotePatterns: [
           {
             protocol: 'https',
-            hostname: 'lifestyle-eta.vercel.app',
+            hostname: 'lifestyle-eta.vercel.app'
+            
+          },
+          {
+            protocol: 'https',
+            hostname: 'utfs.io'
+            
           },
         ],
       },

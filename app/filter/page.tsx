@@ -16,7 +16,8 @@ import { Button } from '@/components/ui/button'
 
 import prisma from '@/lib/db'
 import { Pencil, Trash } from 'lucide-react'
-import { CreateCategoryDialog } from '../categories/create-dialog'
+import { CreateProductDialog } from '../categories/create-product'
+
 
 
 
@@ -67,7 +68,17 @@ function classNames(...classes) {
 }
 
 export default async function Example() {
-  const products = await prisma.product.findMany()
+  const productsPromise= await prisma.product.findMany({
+    include:{
+      category:{
+       select:{
+        name:true
+       }
+      }
+    }
+  })
+
+const [products,categories]=await Promise.all([productsPromise,prisma.category.findMany()])
   console.log(products);
   
   
@@ -114,7 +125,7 @@ export default async function Example() {
               </Menu>
 
 
-    <CreateCategoryDialog/>
+   <CreateProductDialog categories={categories}/>
 
             </div>
           </div>
@@ -173,9 +184,11 @@ export default async function Example() {
         <div className='bg-[#F3E6DA] h-[300px] flex items-center justify-center'>
           <Image src={product.imageUrl} alt='img' width={200} height={150} className='pt-10 pb-10 text-center flex items-center justify-center' />
         </div>
-        <div className="px-4 py-3 w-72 flex items-center justify-between bg-[#F3E6DA]">
-          <p className="text-lg font-bold text-black truncate block capitalize">{product.name}</p>
-          <p className="text-lg font-semibold text-black cursor-auto my-3">${product.price}</p>
+        
+        <div className="px-4 py-3 w-72 flex flex-col gap-2  bg-[#F3E6DA]">
+        <p className="text-lg text-black truncate block capitalize"><b>Category:</b>{product.category.name}</p>
+          <p className="text-lg  text-black truncate block capitalize"><b>Name:</b>{product.name}</p>
+          <p className="text-lg  text-black cursor-auto "><b>Price:</b>${product.price}</p>
         </div>
         <div className='px-4 py-1 w-72 flex items-center gap-2 bg-[#F3E6DA]'>
           <Button className='bg-black hover:bg-green-600'><Pencil /></Button>
