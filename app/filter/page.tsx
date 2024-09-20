@@ -1,3 +1,4 @@
+
 import {
   Dialog as HeadlessUIDialog, //first Dialog import
   Disclosure,
@@ -17,16 +18,18 @@ import { Button } from '@/components/ui/button'
 import prisma from '@/lib/db'
 import { Pencil, Trash } from 'lucide-react'
 import { CreateProductDialog } from '../categories/create-product'
+import { SortOrder } from '@/src/types'
+import qs from 'query-string'
+import path from 'path'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 
 
 
 const sortOptions = [
-  { name: 'Most Popular', href: '#', current: true },
-  { name: 'Best Rating', href: '#', current: false },
-  { name: 'Newest', href: '#', current: false },
-  { name: 'Price: Low to High', href: '#', current: false },
-  { name: 'Price: High to Low', href: '#', current: false },
+  { name: 'Newest',slug:SortOrder.DATE_DESC},
+  { name: 'Price: Low to High', slug:SortOrder.PRICE_ASC},
+  { name: 'Price: High to Low', slug:SortOrder.PRICE_DESC},
 ]
 
 const filters = [
@@ -63,11 +66,34 @@ const filters = [
   },
 ]
 
-function classNames(...classes) {
+
+
+
+
+function classNames(...classes:string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default async function Example() {
+
+// function handleSortChance(sortOrder:SortOrder){
+//    const query = {
+//     sort:sortOrder
+//    }
+//    const url =qs.stringifyUrl({
+//     url:path.page,
+//     query
+//    })
+//    router.push(url)
+// }
+// console.log(handleSortChance);
+
+// const router = useRouter()
+// const searchParams = useSearchParams()
+// const sortOrder = searchParams.get('sort');
+// const [selectedSortOrder, setSelectedSortOrder] = useState<SortOrder | null>(sortOrder as SortOrder);
+// console.log(searchParams.get('sort'));
+
+export default async function Products() {
   const productsPromise= await prisma.product.findMany({
     include:{
       category:{
@@ -77,7 +103,7 @@ export default async function Example() {
       }
     }
   })
-
+  
 const [products,categories]=await Promise.all([productsPromise,prisma.category.findMany()])
   console.log(products);
   
@@ -109,24 +135,23 @@ const [products,categories]=await Promise.all([productsPromise,prisma.category.f
                   <div className="py-1">
                     {sortOptions.map((option) => (
                       <MenuItem key={option.name}>
-                        <a
-                          href={option.href}
+                        {/* <button
+                          onClick={()=>handleSortChance(option.slug)}
                           className={classNames(
-                            option.current ? 'font-medium text-gray-900' : 'text-gray-500',
+                            option.current ? 'w-full font-medium text-gray-900' : 'text-gray-500',
                             'block px-4 py-2 text-sm data-[focus]:bg-gray-100',
                           )}
                         >
                           {option.name}
-                        </a>
+                        </button> */}
+                        <button>{option.name}</button>
                       </MenuItem>
                     ))}
                   </div>
                 </MenuItems>
               </Menu>
 
-
    <CreateProductDialog categories={categories}/>
-
             </div>
           </div>
 
@@ -176,7 +201,6 @@ const [products,categories]=await Promise.all([productsPromise,prisma.category.f
 
               {/* Product grid */}
               <div className="lg:col-span-3">
-
 <section id="Projects" className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
   {products.map((product) => (
  <Link key={product.id} href={`/filter/product/${product.id}`}>
@@ -184,21 +208,19 @@ const [products,categories]=await Promise.all([productsPromise,prisma.category.f
         <div className='bg-[#F3E6DA] h-[300px] flex items-center justify-center'>
           <Image src={product.imageUrl} alt='img' width={200} height={150} className='pt-10 pb-10 text-center flex items-center justify-center' />
         </div>
-        
         <div className="px-4 py-3 w-72 flex flex-col gap-2  bg-[#F3E6DA]">
         <p className="text-lg text-black truncate block capitalize"><b>Category:</b>{product.category.name}</p>
           <p className="text-lg  text-black truncate block capitalize"><b>Name:</b>{product.name}</p>
           <p className="text-lg  text-black cursor-auto "><b>Price:</b>${product.price}</p>
         </div>
         <div className='px-4 py-1 w-72 flex items-center gap-2 bg-[#F3E6DA]'>
-          <Button className='bg-black hover:bg-green-600'><Pencil /></Button>
-          <Button className='bg-black hover:bg-red-600'><Trash /></Button>
+          <Button className='bg-black hover:bg-green-600'><Link href="/edit"><Pencil /></Link></Button>
+          <Button className='bg-black hover:bg-red-600'><Trash/></Button>
         </div>
       </div>
     </Link>
   ))}
 </section>
-
               </div>
             </div>
           </section>

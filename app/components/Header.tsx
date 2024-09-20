@@ -8,14 +8,25 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import { UserButton } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
 
 const Header = () => {
   const pathname = usePathname();
 
   return (
-    <div className=" flex items-center justify-between fixed z-50 w-full">
-      <div className="w-full pl-2 pr-2 2xl:pl-10 lg:pr-10 pt-6 pb-6 bg-[#F3E6DA] flex items-center justify-between">
-        <div className="hidden xl:flex gap-3 items-center font-serif text-xl cursor-pointer ">
+    <div className="fixed z-50 w-full bg-[#F3E6DA]">
+      <div className="flex items-center justify-between px-4 lg:px-10 py-6">
+        {/*Navigation Links */}
+        <div className="hidden xl:flex gap-6 items-center font-serif text-lg">
           <Link
             href="/shop"
             className={pathname === "/shop" ? "underline" : "text-black"}
@@ -47,25 +58,53 @@ const Header = () => {
             Shoes
           </Link>
         </div>
-        <MenuIcon className="xl:hidden" />
-        <div className="flex justify-center items-center w-full 2xl:mr-48 xl:mr-48 left-0 right-0 mx-auto">
+
+        {/*Logo */}
+        <div className="flex justify-center w-full xl:w-auto">
           <Image
             width={50}
             height={50}
             src="https://lifestyle-eta.vercel.app/new-image/sticky-logo.svg"
             alt="logo"
+            className="mx-auto"
           />
         </div>
-        <div className="flex gap-5 items-center">
-          {/* <PersonOutlineIcon className="hidden xl:block cursor-pointer" /> */}
-          <div className="hidden xl:block cursor-pointer">
+
+        <div className="flex items-center gap-5">
+          <div className="hidden xl:block">
             <UserButton />
           </div>
-          <FavoriteBorderIcon className=" hidden xl:block cursor-pointer" />
-          <ShoppingBasketOutlinedIcon className="cursor-pointer" />
+          <FavoriteBorderIcon className="hidden xl:block cursor-pointer" />
+          {/* <Link href="/basket"><ShoppingBasketOutlinedIcon/></Link> */}
+<Dialog>
+  <DialogTrigger asChild>
+    <ShoppingBasketOutlinedIcon className="cursor-pointer"/>
+  </DialogTrigger>
+  <div className="flex">
+  <DialogContent className="sm:max-w-[400px] min-h-screen bg-[#F3E6DA] fixed left-[87%]">
+    <DialogHeader>
+      <DialogTitle className="text-3xl">Cart</DialogTitle>
+    </DialogHeader>
+    <DialogDescription>
+      incl. 20% VAT. excl. Shipping costs11.80€
+      </DialogDescription>
+      <hr />
+  <div className="flex justify-between">
+    <p>Subtotal</p>
+    <p>70.80€</p>
+  </div>
+      <div className="flex flex-col gap-3 justify-center">
+      <Button type="submit">View cart</Button>
+      <Button type="submit">Checkout</Button>
+      </div>
+ 
+  </DialogContent>
+</div>
+</Dialog>
+</div>
+          <MenuIcon className="xl:hidden cursor-pointer" />
         </div>
       </div>
-    </div>
   );
 };
 

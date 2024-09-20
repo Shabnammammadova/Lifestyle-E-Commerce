@@ -1,7 +1,7 @@
 "use server"
 
 import prisma from "@/lib/db";
-import { Product } from "@prisma/client";
+import { Prisma, Product } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
 
@@ -12,4 +12,35 @@ export async function createProduct(data:Props){
  });
  revalidatePath('/filter')
  return product
+}
+
+
+//Update
+export async function updateProduct(data: Prisma.ProductUpdateInput & { id: string }) {
+   const { id, name, price,imageUrl } = data;
+   const product = await prisma.product.update({
+       where: {
+           id
+       },
+       data: {
+           name,
+           price,
+           imageUrl
+       }
+   });
+   revalidatePath("/filter");
+   return product;
+}
+
+
+
+//Delete
+export async function deleteProduct(id:string){
+   const product = await prisma.product.delete({
+    where:{
+       id
+    }
+   });
+   revalidatePath('/filter');
+   return product;
 }

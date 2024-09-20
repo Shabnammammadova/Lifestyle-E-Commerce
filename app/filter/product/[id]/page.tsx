@@ -9,6 +9,7 @@ import {
 import { MinusIcon, PlusIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 
+
 const filters = [
   {
     id: "description",
@@ -108,6 +109,9 @@ const ProductDetailPage = async ({ params }: { params: { id: string } }) => {
                   </button>
                 </div>
               </div>
+              <div className='px-4 py-1 w-72 flex items-center gap-2 bg-[#F3E6DA]'>
+
+        </div>
               <form className="mt-4 border-t border-gray-200">
                 <h3 className="sr-only">Categories</h3>
 
