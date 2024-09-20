@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import {ClerkProvider} from '@clerk/nextjs'
+import { Toaster } from "sonner";
 
 
 const barlow = localFont({
@@ -39,7 +40,9 @@ export default function RootLayout({
  <html lang="en" className={`${barlow.variable} ${sans.variable} ${tinos.variable} ${playfair.variable}`}>
       <body className="font-sans flex flex-col justify-between">
         <Header/>
-        <div>{children}</div>
+        <div>{children}
+          <Toaster/>
+        </div>
         <Footer/>
       </body>
     </html>

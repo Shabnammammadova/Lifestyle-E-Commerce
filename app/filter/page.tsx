@@ -8,24 +8,16 @@ import {
   MenuItem,
   MenuItems,
 } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+
 import { ChevronDownIcon, MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import {
-    Dialog as CustomDialog, // second Dialog import
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-  } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+
 import prisma from '@/lib/db'
 import { Pencil, Trash } from 'lucide-react'
+import { CreateCategoryDialog } from '../categories/create-dialog'
+
 
 
 const sortOptions = [
@@ -35,12 +27,7 @@ const sortOptions = [
   { name: 'Price: Low to High', href: '#', current: false },
   { name: 'Price: High to Low', href: '#', current: false },
 ]
-const subCategories = [
-  { name: 'Sunglasses', href: '#' },
-  { name: 'Bag', href: '#' },
-  { name: 'Shoes', href: '#' },
-  { name: 'Blazer', href: '#' },
-]
+
 const filters = [
   {
     id: 'color',
@@ -64,7 +51,7 @@ const filters = [
   },
   {
     id: 'size',
-    name: 'Size',
+    name: 'Choose Size',
     options: [
       { value: '2l', label: 'Narrow', checked: false },
       { value: '6l', label: 'Extra Narrow', checked: false },
@@ -88,8 +75,6 @@ export default async function Example() {
   return (
     <div className="bg-white font-serif mt-5">
       <div>
-
-
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">Shop</h1>
@@ -128,44 +113,8 @@ export default async function Example() {
                 </MenuItems>
               </Menu>
 
-              <CustomDialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Add product</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Product added</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input
-              id="name"
-              defaultValue="Pedro Duarte"
-              className="col-span-3"
-            />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input
-              id="username"
-              defaultValue="@peduarte"
-              className="col-span-3"
-            />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit">Save changes</Button>
-        </DialogFooter>
-      </DialogContent>
-    </CustomDialog>
+
+    <CreateCategoryDialog/>
 
             </div>
           </div>
@@ -179,13 +128,6 @@ export default async function Example() {
               {/* Filters */}
               <form className="hidden lg:block">
                 <h3 className="sr-only">Categories</h3>
-                <ul role="list" className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
-                    </li>
-                  ))}
-                </ul>
 
                 {filters.map((section) => (
                   <Disclosure key={section.id} as="div" className="border-b border-gray-200 py-6">

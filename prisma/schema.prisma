@@ -9,8 +9,36 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id         String   @id @default(cuid())
+  externalId String   @unique
+  email      String   @unique
+  firsName   String?
+  lastName   String?
+  imgeUrl    String?
+  role       Role     @default(USER)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
 
 model Product {
+  id        String   @id @default(cuid())
+  name      String
+  price     Float
+  inStock   Boolean  @default(true)
+  imageUrl  String
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+
+
+model Bag {
   id        String   @id @default(cuid())
   name      String
   price     Float
