@@ -1,36 +1,24 @@
 
 import {
-  Dialog as HeadlessUIDialog, //first Dialog import
+  // Dialog, //first Dialog import
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
   Menu,
   MenuButton,
-  MenuItem,
+  // MenuItem,
   MenuItems,
 } from '@headlessui/react'
 
 import { ChevronDownIcon, MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-
-import prisma from '@/lib/db'
-import { Pencil, Trash } from 'lucide-react'
-import { CreateProductDialog } from '../categories/create-product'
-import { SortOrder } from '@/src/types'
-import qs from 'query-string'
-import path from 'path'
-import { useRouter, useSearchParams } from 'next/navigation'
+import Page from '../components/common/page'
 
 
-
-
-const sortOptions = [
-  { name: 'Newest',slug:SortOrder.DATE_DESC},
-  { name: 'Price: Low to High', slug:SortOrder.PRICE_ASC},
-  { name: 'Price: High to Low', slug:SortOrder.PRICE_DESC},
-]
+// const sortOptions = [
+//   { name: 'Newest',slug:SortOrder.DATE_DESC},
+//   { name: 'Price: Low to High', slug:SortOrder.PRICE_ASC},
+//   { name: 'Price: High to Low', slug:SortOrder.PRICE_DESC},
+// ]
 
 const filters = [
   {
@@ -70,9 +58,9 @@ const filters = [
 
 
 
-function classNames(...classes:string[]) {
-  return classes.filter(Boolean).join(' ')
-}
+// function classNames(...classes:string[]) {
+//   return classes.filter(Boolean).join(' ')
+// }
 
 
 // function handleSortChance(sortOrder:SortOrder){
@@ -93,22 +81,7 @@ function classNames(...classes:string[]) {
 // const [selectedSortOrder, setSelectedSortOrder] = useState<SortOrder | null>(sortOrder as SortOrder);
 // console.log(searchParams.get('sort'));
 
-export default async function Products() {
-  const productsPromise= await prisma.product.findMany({
-    include:{
-      category:{
-       select:{
-        name:true
-       }
-      }
-    }
-  })
-  
-const [products,categories]=await Promise.all([productsPromise,prisma.category.findMany()])
-  console.log(products);
-  
-  
-  
+export default  function Products() {
   return (
     <div className="bg-white font-serif mt-5">
       <div>
@@ -132,7 +105,7 @@ const [products,categories]=await Promise.all([productsPromise,prisma.category.f
                   transition
                   className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
                 >
-                  <div className="py-1">
+                  {/* <div className="py-1">
                     {sortOptions.map((option) => (
                       <MenuItem key={option.name}>
                         {/* <button
@@ -144,14 +117,14 @@ const [products,categories]=await Promise.all([productsPromise,prisma.category.f
                         >
                           {option.name}
                         </button> */}
-                        <button>{option.name}</button>
-                      </MenuItem>
-                    ))}
-                  </div>
+                        {/* <button>{option.name}</button> */}
+                      {/* </MenuItem> */}
+                    {/* ))} */}
+                  {/* </div> */}
                 </MenuItems>
               </Menu>
 
-   <CreateProductDialog categories={categories}/>
+   {/* <CreateProductDialog categories={categories}/> */}
             </div>
           </div>
 
@@ -201,26 +174,7 @@ const [products,categories]=await Promise.all([productsPromise,prisma.category.f
 
               {/* Product grid */}
               <div className="lg:col-span-3">
-<section id="Projects" className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
-  {products.map((product) => (
- <Link key={product.id} href={`/filter/product/${product.id}`}>
-      <div className="w-72 bg-white shadow-md rounded-xl duration-500">
-        <div className='bg-[#F3E6DA] h-[300px] flex items-center justify-center'>
-          <Image src={product.imageUrl} alt='img' width={200} height={150} className='pt-10 pb-10 text-center flex items-center justify-center' />
-        </div>
-        <div className="px-4 py-3 w-72 flex flex-col gap-2  bg-[#F3E6DA]">
-        <p className="text-lg text-black truncate block capitalize"><b>Category:</b>{product.category.name}</p>
-          <p className="text-lg  text-black truncate block capitalize"><b>Name:</b>{product.name}</p>
-          <p className="text-lg  text-black cursor-auto "><b>Price:</b>${product.price}</p>
-        </div>
-        <div className='px-4 py-1 w-72 flex items-center gap-2 bg-[#F3E6DA]'>
-          <Button className='bg-black hover:bg-green-600'><Link href="/edit"><Pencil /></Link></Button>
-          <Button className='bg-black hover:bg-red-600'><Trash/></Button>
-        </div>
-      </div>
-    </Link>
-  ))}
-</section>
+                <Page/>
               </div>
             </div>
           </section>

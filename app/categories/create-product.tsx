@@ -66,7 +66,7 @@ export function CreateProductDialog({categories}:{categories:Category[]}):React.
   return (
     <Dialog>
       <DialogTrigger asChild>
-      <MuiButton variant="contained">
+      <MuiButton variant="contained" className='bg-black w-[150px]'>
             Add
           </MuiButton>
       </DialogTrigger>
