@@ -14,6 +14,14 @@ export async function createProduct(data:Props){
  return product
 }
 
+export async function getProduct(id:string){
+   const product = await prisma.product.findUnique({
+      where:{
+         id
+      }
+   })
+   return product
+}
 
 //Update
 export async function updateProduct(data: Prisma.ProductUpdateInput & { id: string }) {

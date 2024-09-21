@@ -41,7 +41,7 @@ export default function RootLayout({
       <body className="font-sans flex flex-col justify-between">
         <Header/>
         <div>{children}
-          <Toaster/>
+          <Toaster richColors/>
         </div>
         <Footer/>
       </body>

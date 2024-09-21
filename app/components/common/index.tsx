@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button'
 import { Product as IProduct, Prisma } from '@prisma/client'
 import { Pencil, Trash } from 'lucide-react'
 import { deleteProduct } from '@/app/actions/product'
-import { revalidatePath } from 'next/cache'
+import { toast } from 'sonner'
+
 
 
 export const Product = ({product}:{product:Prisma}) => {
@@ -15,7 +16,9 @@ export const Product = ({product}:{product:Prisma}) => {
     try {
       const promise = deleteProduct(id).then(() => {
         console.log("Product deleted successfully.");
-        revalidatePath('/filter')
+        toast.promise(promise,{
+          success:"Product deleted"
+        })
       });
       console.log(promise);
     } catch (error) {
@@ -23,6 +26,7 @@ export const Product = ({product}:{product:Prisma}) => {
     }
   }
   
+
   
   return (
     <div>
@@ -38,7 +42,7 @@ export const Product = ({product}:{product:Prisma}) => {
           <p className="text-lg  text-black cursor-auto "><b>Price:</b>${product.price}</p>
         </div>
         <div className='px-4 py-1 w-72 flex items-center gap-2 bg-[#F3E6DA]'>
-          <Button className='bg-black hover:bg-green-600'><Link href="/edit"><Pencil /></Link></Button>
+          <Button className='bg-black hover:bg-green-600'><Link href={`/edit?id=${product.id}&name=${product.name}&price=${product.price}&imageUrl=${product.imageUrl}`}><Pencil /></Link></Button>
           <Button className='bg-black hover:bg-red-600' onClick={(e)=>{handleDelete(product.id)}}><Trash/></Button>
         </div>
       </div>
