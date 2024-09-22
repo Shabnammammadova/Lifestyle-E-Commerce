@@ -117,7 +117,7 @@ const Blazer = () => {
               className="object-cover"
             />
           </div>
-          <div className="flex justify-center items-center mx-auto bg-[#F3E6DA] h-[590px] w-[300px] md:w-full md:h-[580px]">
+          <div className="flex justify-center items-center mx-auto bg-[#F3E6DA] h-[590px] w-[300px] sm:w-full md:w-full md:h-[580px]">
             <Image
               src="https://lifestyle-eta.vercel.app/images/blazer-product-5.png"
               alt="bag"
@@ -128,7 +128,7 @@ const Blazer = () => {
           </div>
         </div>
         <div className="flex  items-center  lg:flex-row flex-col">
-          <div className="flex justify-center items-center mx-auto bg-[#F3E6DA] h-[590px] w-[300px] md:w-full md:h-[580px]">
+          <div className="flex justify-center items-center mx-auto bg-[#F3E6DA] h-[590px] w-[300px] sm:w-full md:w-full md:h-[580px]">
             <Image
               src="https://lifestyle-eta.vercel.app/images/blazer-product-6.png"
               alt="bag"
@@ -157,7 +157,7 @@ const Blazer = () => {
               className="object-cover"
             />
           </div>
-          <div className="flex justify-center items-center mx-auto bg-[#F3E6DA] h-[590px] w-[300px] md:w-full md:h-[580px]">
+          <div className="flex justify-center items-center mx-auto bg-[#F3E6DA] h-[590px] w-[300px] sm:w-full md:w-full md:h-[580px]">
             <Image
               src="https://lifestyle-eta.vercel.app/images/blazer-product-7.png"
               alt="bag"

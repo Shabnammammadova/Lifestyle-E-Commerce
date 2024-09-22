@@ -16,6 +16,13 @@ export async function createProduct(data:Props){
 
 export async function getProduct(id:string){
    const product = await prisma.product.findUnique({
+      include:{
+         category:{
+            select:{
+               id:true
+            }
+         }
+      },
       where:{
          id
       }
@@ -24,16 +31,17 @@ export async function getProduct(id:string){
 }
 
 //Update
-export async function updateProduct(data: Prisma.ProductUpdateInput & { id: string }) {
-   const { id, name, price,imageUrl } = data;
+export async function updateProduct(data: Prisma.ProductUpdateInput & { id: string; categoryId?:string}) {
+   const { id, name, price,imageUrl,categoryId } = data;   
    const product = await prisma.product.update({
        where: {
            id
        },
        data: {
            name,
-           price,
-           imageUrl
+           price:Number(price),
+           imageUrl,
+           category:{ connect: { id: categoryId as string } }
        }
    });
    revalidatePath("/filter");
@@ -52,3 +60,10 @@ export async function deleteProduct(id:string){
    revalidatePath('/filter');
    return product;
 }
+
+
+export async function getCategories(){
+   const categories = await prisma.category.findMany()
+   return categories;
+}
+

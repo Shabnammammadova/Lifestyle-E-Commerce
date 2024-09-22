@@ -13,7 +13,7 @@ const Footer = () => {
           className="mx-auto"
         />
 
-        <div className="flex mt-20 w-full mx-auto justify-between font-serif text-black text-xl px-8 flex-col md:flex-row">
+        <div className="flex mt-20 w-full mx-auto justify-between font-serif text-black text-xl px-8 flex-col sm:items-center md:flex-row">
           <ul className="flex flex-col">
             <p className="mb-8">Social</p>
             <li className="hover:underline hidden md:block">Instagram</li>

@@ -1,4 +1,4 @@
-
+// "use client"
 import {
   // Dialog, //first Dialog import
   Disclosure,
@@ -6,7 +6,6 @@ import {
   DisclosurePanel,
   Menu,
   MenuButton,
-  MenuItem,
   // MenuItem,
   MenuItems,
 } from '@headlessui/react'
@@ -15,11 +14,17 @@ import { ChevronDownIcon, MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import Page from '../components/common/page'
 
 
-const sortOptions = [
-  { name: 'Newest'},
-  { name: 'Price: Low to High'},
-  { name: 'Price: High to Low'},
-]
+
+// const sortOptions = [
+//   { name: 'Newest'},
+//   { name: 'Price: Low to High'},
+//   { name: 'Price: High to Low'},
+// ]
+// const sortOptions = [
+//   { name: 'Newest',slug: SortOrder.DATE_DESC,},
+//   { name: 'Price: Low to High', slug: SortOrder.PRICE_ASC },
+//   { name: 'Price: High to Low', slug: SortOrder.PRICE_DESC },
+// ];
 
 const filters = [
   {
@@ -59,9 +64,10 @@ const filters = [
 
 
 
-function classNames(...classes:string[]) {
-  return classes.filter(Boolean).join(' ')
-}
+// function classNames(...classes:string[]) {
+//   return classes.filter(Boolean).join(' ')
+// }
+
 
 
 // function handleSortChance(sortOrder:SortOrder){
@@ -106,21 +112,7 @@ export default  function Products() {
                   transition
                   className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
                 >
-                  <div className="py-1">
-                    {sortOptions.map((option) => (
-                      <MenuItem key={option.name}>
-                        <button
-                          className={classNames(
-                            option.current ? 'w-full font-medium text-gray-900' : 'text-gray-500',
-                            'block px-4 py-2 text-sm data-[focus]:bg-gray-100',
-                          )}
-                        >
-                          {option.name}
-                        </button>
-                        <button>{option.name}</button>
-                      </MenuItem>
-                    ))}
-                  </div>
+
                 </MenuItems>
               </Menu>
 
