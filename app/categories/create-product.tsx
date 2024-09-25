@@ -65,11 +65,14 @@ export function CreateProductDialog({categories}:{categories:Category[]}):React.
     }
   return (
     <Dialog>
-      <DialogTrigger asChild>
-      <MuiButton variant="contained" className='bg-black w-[150px]'>
-            Add
-          </MuiButton>
-      </DialogTrigger>
+     <div className="flex justify-center items-center">
+  <DialogTrigger asChild>
+    <MuiButton variant="contained" className='bg-black w-[150px] text-center'>
+      Add
+    </MuiButton>
+  </DialogTrigger>
+</div>
+
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className='text-white'>Create Product</DialogTitle>

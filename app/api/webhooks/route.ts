@@ -66,12 +66,20 @@ export async function POST(req: Request) {
           email:email_address,
           firstName:first_name,
           lastName:last_name,
-          imageUrl:image_url
+          imageUrl:image_url,
+          cart:{
+            create:{}
+          }
         }
       })
       console.log('payload-created',payload)
       break;
     case 'user.deleted':
+     await prisma.cart.delete({
+        where:{
+          userId:id
+        }
+      })
       await prisma.user.delete({
         where:{
           externalId:payload.user.id

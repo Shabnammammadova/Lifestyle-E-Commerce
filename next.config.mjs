@@ -12,6 +12,10 @@ const nextConfig = {
             hostname: 'utfs.io'
             
           },
+          {
+            protocol:'https',
+            hostname:'readymadeui.com'
+          }
         ],
       },
 };

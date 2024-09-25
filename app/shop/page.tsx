@@ -34,8 +34,8 @@ const Shop = () => {
             <p className="text-4xl md:text-5xl">Demo of Shop pages</p>
           </h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-10 gap-x-6 xl:gap-x-48 lg:gap-x-16 lg:gap-y-11 sm:content-center my-16 max-w-[680px] md:max-w-screen-md lg:max-w-screen-xl mx-auto text-center">
+          <Link href="/filter">
             <div className="flex flex-col items-center">
-              <Link href="/filter">
               <div className="border border-black rounded-lg h-72 xl:w-[524px] xl:h-[380px] md:h-72 sm:h-[250px] sm:w-[320px] overflow-hidden">
                 <Image
                   src="https://lifestyle-eta.vercel.app/images/shop-sunglasses-page.png"
@@ -44,14 +44,15 @@ const Shop = () => {
                   height={380}
                   className="cursor-pointer z-0 object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105 w-full h-auto lg:w-[535px] lg:h-[380px] md:w-[535px] md:h-[385px] sm:w-[320px] sm:h-[250px]"
                 />
-              </div></Link>
+              </div>
+              
               <p className="text-xl md:text-2xl mt-5 font-serif">
                 Sunglasses Shop
               </p>
             </div>
-
-            <div className="flex flex-col items-center">
+            </Link>
             <Link href="/filter">
+            <div className="flex flex-col items-center">
               <div className="border border-black rounded-lg h-72 xl:w-[524px] xl:h-[380px] md:h-72 sm:h-[250px] sm:w-[320px] overflow-hidden">
                 <Image
                   src="https://lifestyle-eta.vercel.app/images/shop-bag-page.jpg"
@@ -61,12 +62,12 @@ const Shop = () => {
                   className="cursor-pointer z-0 object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105 w-full h-auto lg:w-[535px] lg:h-[385px] md:w-[535px] md:h-[385px] sm:w-[320px] sm:h-[250px]"
                 />
               </div>
-              </Link>
+              
               <p className="text-xl md:text-2xl mt-5 font-serif">Bag Shop</p>
             </div>
-
-            <div className="flex flex-col items-center">
+            </Link>
             <Link href="/filter">
+            <div className="flex flex-col items-center">
               <div className="border border-black rounded-lg h-72 xl:w-[524px] xl:h-[380px] md:h-72 sm:h-[250px] sm:w-[320px] overflow-hidden">
                 <Image
                   src="https://lifestyle-eta.vercel.app/images/shop-blazer-page.jpg"
@@ -76,12 +77,11 @@ const Shop = () => {
                   className="cursor-pointer z-0 object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105 w-full h-auto lg:w-[535px] lg:h-[385px] md:w-[535px] md:h-[385px] sm:w-[320px] sm:h-[250px]"
                 />
               </div>
-              </Link>
               <p className="text-xl md:text-2xl mt-5 font-serif">Blazer Shop</p>
             </div>
-
-            <div className="flex flex-col items-center">
+            </Link>
             <Link href="/filter">
+            <div className="flex flex-col items-center">
               <div className="border border-black rounded-lg h-72 xl:w-[524px] xl:h-[380px] md:h-72 sm:h-[250px] sm:w-[320px] overflow-hidden">
                 <Image
                   src="https://lifestyle-eta.vercel.app/images/shop-shoes-page.jpg"
@@ -91,11 +91,11 @@ const Shop = () => {
                   className="cursor-pointer z-0 object-cover object-top transform transition-transform duration-500 ease-in-out hover:scale-105 w-full h-auto lg:w-[535px] lg:h-[385px] md:w-[535px] md:h-[385px] sm:w-[320px] sm:h-[250px]"
                 />
               </div>
-              </Link>
               <p className="text-xl md:text-2xl mt-5 font-serif">
                 Footwear Shop
               </p>
             </div>
+            </Link>
           </div>
         </div>
       </section>

@@ -3,14 +3,15 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Product as IProduct, Prisma } from '@prisma/client'
+import { Product as IProduct} from '@prisma/client'
 import { Pencil, Trash } from 'lucide-react'
 import { deleteProduct } from '@/app/actions/product'
 import { toast } from 'sonner'
 
 
 
-export const Product = ({product}:{product:Prisma}) => {
+export const Product = ({product}:{product:IProduct}) => {
+
 
   function handleDelete(id) {
     try {

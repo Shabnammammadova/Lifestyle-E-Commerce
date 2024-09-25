@@ -180,7 +180,7 @@ const Blazer = () => {
         id="Projects"
         className="w-full mx-auto grid grid-cols-1 gap-2 xl:grid-cols-3 lg:grid-cols-2 lg:gap-5 md:grid-cols-1 justify-items-center justify-center mt-10 mb-5 uppercase gap-y-20 gap-x-24 xl:gap-2"
       >
-        <div className=" w-full lg:w-[500px] bg-[#F3E6DA] flex flex-col items-center gap-10">
+        <div className=" w-full  bg-[#F3E6DA] flex flex-col items-center gap-10">
           <Image
             src="https://lifestyle-eta.vercel.app/images/blazer-product-8.png"
             alt="Product"
@@ -188,7 +188,7 @@ const Blazer = () => {
             width={320}
             height={350}
           />
-          <div className="w-[300px] lg:w-[450px]">
+          <div>
             <div className="flex items-center w-full justify-between gap-10 relative mt-10">
               <p className="text-lg font-semibold text-black cursor-auto my-3">
                Wool coat
@@ -199,7 +199,7 @@ const Blazer = () => {
             </div>
           </div>
         </div>
-        <div className="w-full lg:w-[500px] bg-[#F3E6DA] flex flex-col items-center gap-20">
+        <div className="w-full  bg-[#F3E6DA] flex flex-col items-center gap-20">
           <Image
             src="	https://lifestyle-eta.vercel.app/images/blazer-product-9.png"
             alt="Product"
@@ -207,7 +207,7 @@ const Blazer = () => {
             width={320}
             height={350}
           />
-          <div className="w-[300px] lg:w-[450px]">
+          <div>
             <div className="flex items-center w-full justify-between gap-10 relative mt-10">
               <p className="text-lg font-semibold text-black cursor-auto my-3">
                 Blazer Coat
@@ -218,7 +218,7 @@ const Blazer = () => {
             </div>
           </div>
         </div>
-        <div className="w-full lg:w-[500px]  bg-[#F3E6DA] flex flex-col items-center gap-20">
+        <div className="w-full   bg-[#F3E6DA] flex flex-col items-center gap-20">
           <Image
             src="https://lifestyle-eta.vercel.app/images/blazer-product-10.png"
             alt="Product"
@@ -226,7 +226,7 @@ const Blazer = () => {
             width={320}
             height={350}
           />
-          <div className="w-[300px] lg:w-[450px]">
+          <div>
             <div className="flex items-center w-full justify-between gap-10 relative mt-10">
               <p className="text-lg font-semibold text-black cursor-auto my-3">
                 Balazer Coat

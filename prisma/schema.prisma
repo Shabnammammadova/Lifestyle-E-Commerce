@@ -24,6 +24,7 @@ model User {
   role       Role     @default(USER)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+  cart       Cart?
 }
 
 model Product {
@@ -36,6 +37,7 @@ model Product {
   createdAt DateTime @default(now())
   category    Category @relation(fields: [categoryId],references: [id])
   categoryId  String
+  cartItems CartItem[]
 }
 
 model Category{
@@ -46,3 +48,18 @@ model Category{
   updatedAt DateTime @updatedAt
 }
 
+model CartItem {
+  id        String  @id @default(cuid())
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+  quantity  Int
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  cartId    String
+}
+
+model Cart {
+  id     String @id @default(cuid())
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+  items CartItem[]
+}
