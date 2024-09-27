@@ -10,6 +10,7 @@ import { toast } from 'sonner'
 
 
 
+
 export const Product = ({product}:{product:IProduct}) => {
 
 
@@ -31,6 +32,8 @@ export const Product = ({product}:{product:IProduct}) => {
   
   return (
     <div>
+
+    <div>
       <div className="w-72 bg-white shadow-md rounded-xl duration-500">
         <div className='bg-[#F3E6DA] h-[300px] flex items-center justify-center'>
         <Link key={product.id} href={`/filter/product/${product.id}`}>
@@ -47,8 +50,9 @@ export const Product = ({product}:{product:IProduct}) => {
           <Button className='bg-black hover:bg-red-600' onClick={(e)=>{handleDelete(product.id)}}><Trash/></Button>
         </div>
       </div>
-    
     </div>
+    </div>
+
   )
 }
 

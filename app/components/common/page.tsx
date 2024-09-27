@@ -5,7 +5,6 @@ import { Product as IProduct } from '@prisma/client';
 import { CreateProductDialog } from '@/app/categories/create-product';
 
 const Page = async() => {
-// const products= await prisma.product.findMany()
 const productsPromise= await prisma.product.findMany({
   include:{
     category:{

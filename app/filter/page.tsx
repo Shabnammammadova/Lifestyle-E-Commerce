@@ -1,9 +1,6 @@
 import Page from '../components/common/page'
 
 
-
-
-
 export default  function Products() {
   return (
     <div className='mt-32'>
