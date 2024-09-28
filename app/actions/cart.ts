@@ -5,7 +5,6 @@ import { auth } from '@clerk/nextjs/server';
 
 
 import prisma from '@/lib/db';
-import path from 'path';
 
 
 export async function getCart() {

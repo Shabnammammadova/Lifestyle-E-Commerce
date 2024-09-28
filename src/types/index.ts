@@ -1,4 +1,4 @@
-import { Cart, CartItem, Product } from "@prisma/client";
+import { Cart, CartItem, Favorite, FavoriteItem, Product } from "@prisma/client";
 
 
 export enum SortOrder {
@@ -14,3 +14,9 @@ export type SafeCartItem = CartItem & {
 export type SafeCart = Cart & {
   items: SafeCartItem[];
 };
+export type SafeFavoriteItem = FavoriteItem &{
+    product:Product
+}
+export type SafeFavorite = Favorite &{
+    items:SafeFavoriteItem[]
+}

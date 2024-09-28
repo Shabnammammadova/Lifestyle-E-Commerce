@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+
 
 import MenuIcon from "@mui/icons-material/Menu";
 import { UserButton } from "@clerk/nextjs";
@@ -10,6 +10,7 @@ import { auth } from "@clerk/nextjs/server";
 import prisma from "@/lib/db";
 import { Role } from "@prisma/client";
 import { CartButton } from "./common/CartButton";
+import { FavButton } from "./common/FavButton";
 
 const Header = async () => {
   const { userId } = auth();
@@ -50,12 +51,8 @@ const Header = async () => {
           <div className=" hidden xl:block">
             <UserButton />
           </div>
-          <div className="flex items-center gap-1">
-            <Link href="/wishlist">
-              <FavoriteBorderIcon className="hidden xl:block cursor-pointer" />
-            </Link>
-          </div>
-          <CartButton />
+          <FavButton/>
+          <CartButton/>
           <MenuIcon className="xl:hidden cursor-pointer" />
         </div>
       </div>

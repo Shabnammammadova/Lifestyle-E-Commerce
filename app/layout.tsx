@@ -7,9 +7,10 @@ import Footer from "./components/Footer";
 import {ClerkProvider} from '@clerk/nextjs'
 import { Toaster } from "sonner";
 import Cart from "./components/common/cart";
-import { SafeCart } from "@/src/types";
+import { SafeCart, SafeFavorite } from "@/src/types";
 import prisma from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
+import Wishlist from "./components/common/favorite";
 
 
 
@@ -58,6 +59,18 @@ export default async function RootLayout({
       },
     },
   });
+  const favorite = await prisma.favorite.findUnique({
+    where: {
+      userId: user!.id,
+    },
+    include: {
+      items: {
+        include: {
+          product: true,
+        },
+      },
+    },
+  });
 
   return (
     <ClerkProvider>
@@ -65,6 +78,7 @@ export default async function RootLayout({
       <body className="font-sans flex flex-col justify-between">
         <Header/>
         <Cart cart={cart as SafeCart} />
+        <Wishlist favorite={favorite as SafeFavorite}/>
         <div>{children}
           <Toaster richColors/>
         </div>
