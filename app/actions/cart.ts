@@ -88,3 +88,13 @@ export async function addToCart({ productId, quantity }: { productId: string; qu
 
   return cartItem;
 }
+
+export async function deleteCart(id:string){
+  const cart = await prisma.cartItem.delete({
+   where:{
+      id
+   }
+  });
+  revalidatePath('/filter');
+  return cart;
+}

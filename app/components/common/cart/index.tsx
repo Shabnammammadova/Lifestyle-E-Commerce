@@ -1,5 +1,6 @@
 'use client';
 
+import { deleteCart } from '@/app/actions/cart';
 import { useCartModal } from '@/src/hooks/use-cart-modal';
 import { SafeCart } from '@/src/types';
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
@@ -7,13 +8,26 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 
 
 import Image from 'next/image';
+import { toast } from 'sonner';
 
 
 
 export default function Cart({ cart }: { cart: SafeCart }) {
   const { isOpen, close } = useCartModal();
 console.log(cart);
-
+function handleDelete(id) {
+  try {
+    const promise = deleteCart(id).then(() => {
+      console.log("Product deleted successfully.");
+      toast.promise(promise,{
+        success:"Product deleted"
+      })
+    });
+    console.log(promise);
+  } catch (error) {
+    console.error("Failed to delete product:", error);
+  }
+}
 
   return (
     <Dialog open={isOpen} onClose={close} className="relative z-10">
@@ -51,13 +65,13 @@ console.log(cart);
                       <ul role="list" className="-my-6 divide-y divide-gray-200">
                         {cart.items.map((cartItem) => (
                           <li key={cartItem.id} className="flex py-6">
-                            <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                            <div className="h-32 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                               <Image
                                 alt={cartItem.product.name}
                                 src={cartItem.product.imageUrl}
                                 className="h-full w-full object-cover object-center"
                                 width={100}
-                                height={100}
+                                height={50}
                               />
                             </div>
 
@@ -72,7 +86,7 @@ console.log(cart);
                               </div>
                               <div className="flex flex-1 items-end justify-between text-sm">
                                 <div className="flex">
-                                  <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                  <button  onClick={(e)=>{handleDelete(cartItem.id)}} type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
                                     Remove
                                   </button>
                                 </div>
