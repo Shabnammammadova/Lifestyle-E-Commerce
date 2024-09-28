@@ -23,7 +23,7 @@ console.log(products);
      <CreateProductDialog categories={categories} />
       <section
       id="Projects"
-      className="w-fit mx-auto grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-8 mb-5 mt-5"
+      className="w-fit mx-auto grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-8 mb-5 mt-5"
     >
       {products.map((product) => (
         <Product key={product.id} product={product} />

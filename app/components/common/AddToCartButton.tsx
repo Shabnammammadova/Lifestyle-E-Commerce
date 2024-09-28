@@ -9,9 +9,9 @@ export const AddToCartButton = ({ productId }: { productId: string }) => {
     const resultPromise = addToCart({ productId, quantity: 1 });
 
     toast.promise(resultPromise, {
-      loading: 'Adding to cart...',
-      success: 'Added to cart!',
-      error: 'Error adding to cart',
+      loading: 'Adding to basket...',
+      success: 'Added to basket!',
+      error: 'Error adding to basket',
     });
   };
   return (

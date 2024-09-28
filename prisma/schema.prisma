@@ -18,9 +18,9 @@ model User {
   id         String   @id @default(cuid())
   externalId String   @unique
   email      String   @unique
-  firsName   String?
+  firstName   String?
   lastName   String?
-  imgeUrl    String?
+  imageUrl    String?
   role       Role     @default(USER)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
