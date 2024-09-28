@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-
-import MenuIcon from "@mui/icons-material/Menu";
 import { UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { auth } from "@clerk/nextjs/server";
@@ -49,11 +47,10 @@ const Header = async () => {
             </Link>
           )}
           <div className=" hidden xl:block">
-            <UserButton />
+            <UserButton/>
           </div>
           <FavButton/>
           <CartButton/>
-          <MenuIcon className="xl:hidden cursor-pointer" />
         </div>
       </div>
     </div>

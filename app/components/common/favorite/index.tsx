@@ -1,5 +1,6 @@
 'use client';
 
+import { deleteFavorite } from '@/app/actions/favorite';
 import { useFavModal } from '@/src/hooks/use-fav-modal';
 import { SafeFavorite } from '@/src/types';
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
@@ -8,6 +9,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { toast } from 'sonner';
 
 
 
@@ -16,19 +18,19 @@ export default function Wishlist({ favorite }: { favorite: SafeFavorite }) {
   const { isOpen, close } = useFavModal();
 console.log(favorite);
 
-// function handleDelete(id) {
-//   try {
-//     const promise = deleteCart(id).then(() => {
-//       console.log("Product deleted successfully.");
-//       toast.promise(promise,{
-//         success:"Product deleted"
-//       })
-//     });
-//     console.log(promise);
-//   } catch (error) {
-//     console.error("Failed to delete product:", error);
-//   }
-// }
+function handleDelete(id) {
+  try {
+    const promise = deleteFavorite(id).then(() => {
+      console.log("Product deleted successfully.");
+      toast.promise(promise,{
+        success:"Product deleted"
+      })
+    });
+    console.log(promise);
+  } catch (error) {
+    console.error("Failed to delete product:", error);
+  }
+}
 
   return (
     <Dialog open={isOpen} onClose={close} className="relative z-10">
@@ -47,7 +49,7 @@ console.log(favorite);
               <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                 <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 mt-20">
                   <div className="flex items-start justify-between">
-                    <DialogTitle className="text-lg font-medium text-gray-900">Shopping cart</DialogTitle>
+                    <DialogTitle className="text-lg font-medium text-gray-900">Favorite</DialogTitle>
                     <div className="ml-3 flex h-7 items-center">
                       <button
                         type="button"
@@ -87,7 +89,7 @@ console.log(favorite);
                               </div>
                               <div className="flex flex-1 items-end justify-between text-sm">
                                 <div className="flex">
-                                  <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                  <button onClick={(e)=>{handleDelete(favoriteItem.id)}} type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
                                     Remove
                                   </button>
                                 </div>
@@ -97,35 +99,6 @@ console.log(favorite);
                         ))}
                       </ul>
                     </div>
-                  </div>
-                </div>
-
-                <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                  <div className="flex justify-between text-base font-medium text-gray-900">
-                    <p>Subtotal</p>
-                    <p>$262.00</p>
-                  </div>
-                  <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
-                  <div className="mt-6">
-                    <Link
-                      href="/checkout"
-                      className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                    >
-                      Checkout
-                    </Link>
-                  </div>
-                  <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                    <p>
-                      or{' '}
-                      <button
-                        type="button"
-                        onClick={() => close()}
-                        className="font-medium text-indigo-600 hover:text-indigo-500"
-                      >
-                        Continue Shopping
-                        <span aria-hidden="true"> &rarr;</span>
-                      </button>
-                    </p>
                   </div>
                 </div>
               </div>
